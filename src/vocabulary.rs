@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-only
 //! The user's vocabulary, applied to a finished transcript.
 //!
-//! The manifest declares `[capabilities] context = true`, so the daemon sends
-//! the dictation context in force with every `/v1` request. Its vocabulary
-//! arrives as an `x-voice-vocabulary` header, or `x-stt-vocabulary` from a
-//! Super STT daemon: a JSON array of terms spelled the way the user wants them.
+//! Each model in the manifest declares `accepts_context = true`, so the daemon
+//! sends the dictation context in force with every `/v1` request. Its
+//! vocabulary arrives as an `x-voice-vocabulary` header, or `x-stt-vocabulary`
+//! from a Super STT daemon: a JSON array of terms spelled the way the user
+//! wants them.
 //!
 //! Voxtral has nowhere to read it. Its transcription prompt is the audio and a
 //! `lang:` tag, and Mistral's own encoding of a transcription request takes

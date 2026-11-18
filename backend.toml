@@ -25,14 +25,6 @@
 [network]
     allowed_hosts = []
 
-# The user's dictation context. Voxtral's transcription prompt has no place for
-# it, so its vocabulary (`x-voice-vocabulary`) is applied to the transcript:
-# a term written differently, or misspelled in its vowels, is written as the
-# vocabulary spells it (see src/vocabulary.rs). The prompt is sent too and not
-# read.
-[capabilities]
-    context = true
-
 [[assets.subprocess]]
     file = "voxtral-x86_64-unknown-linux-gnu-cuda12.tar.gz"
     target = "x86_64-unknown-linux-gnu"
@@ -87,6 +79,12 @@
 
 [[models]]
     name = "voxtral-mini-3b-2507"
+    # The user's dictation context. Voxtral's transcription prompt has no place
+    # for it, so its vocabulary (`x-voice-vocabulary`) is applied to the
+    # transcript: a term written differently, or misspelled in its vowels, is
+    # written as the vocabulary spells it (see src/vocabulary.rs). The prompt is
+    # sent too and not read.
+    accepts_context = true
     multilingual = true
     primary_language = "en"
     supported_languages = ["en", "es", "fr", "pt", "hi", "de", "nl", "it"]
@@ -103,6 +101,7 @@
 
 [[models]]
     name = "voxtral-small-24b-2507"
+    accepts_context = true
     multilingual = true
     primary_language = "en"
     supported_languages = ["en", "es", "fr", "pt", "hi", "de", "nl", "it"]
